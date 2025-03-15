@@ -1,0 +1,22 @@
+{
+  "extName": {
+    "message": "书签搜索器 - 快速书签查找工具",
+    "description": "扩展名称"
+  },
+  "extDescription": {
+    "message": "快速搜索和管理您的浏览器书签。支持书签搜索、书签管理、书签查找、bookmark search等功能。",
+    "description": "扩展描述"
+  },
+  "title": {
+    "message": "书签查找器",
+    "description": "应用标题"
+  },
+  "placeholder": {
+    "message": "输入书签名称",
+    "description": "搜索框占位符文本"
+  },
+  "languageToggle": {
+    "message": "切换语言",
+    "description": "语言切换按钮的提示文本"
+  }
+} 

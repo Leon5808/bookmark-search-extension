@@ -1,0 +1,24 @@
+# macOS系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# 临时文件
+function_calls>
+
+# 编辑器配置文件
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# 日志文件
+*.log
+
+# 依赖目录
+node_modules/
+
+# 排除嵌入式仓库
+bookmark-search-extension/ 

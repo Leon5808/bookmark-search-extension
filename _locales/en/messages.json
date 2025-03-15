@@ -1,0 +1,22 @@
+{
+  "extName": {
+    "message": "Bookmark Finder & Search - Quick Bookmark Tool",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "Quickly search and manage your browser bookmarks. Features include bookmark search, bookmark finder, markbook search and bookmark management.",
+    "description": "Description of the extension"
+  },
+  "title": {
+    "message": "MarkFinder",
+    "description": "App title"
+  },
+  "placeholder": {
+    "message": "Enter bookmark name",
+    "description": "Search box placeholder text"
+  },
+  "languageToggle": {
+    "message": "Switch language",
+    "description": "Tooltip for language toggle button"
+  }
+} 

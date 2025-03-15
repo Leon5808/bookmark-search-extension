@@ -1,0 +1,22 @@
+{
+  "extName": {
+    "message": "书签查找器",
+    "description": "扩展程序的名称"
+  },
+  "extDescription": {
+    "message": "快速查找您的谷歌书签",
+    "description": "扩展程序的描述"
+  },
+  "title": {
+    "message": "书签查找器",
+    "description": "应用标题"
+  },
+  "placeholder": {
+    "message": "输入书签名称",
+    "description": "搜索框占位符文本"
+  },
+  "languageToggle": {
+    "message": "切换语言",
+    "description": "语言切换按钮的提示文本"
+  }
+} 

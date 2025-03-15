@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title id="pageTitle">书签查找器</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header-container">
+      <h1 id="appTitle">书签查找器</h1>
+      <button id="language-toggle" class="language-toggle" title="切换语言">
+        <img src="images/language-icon.png" alt="切换语言" width="22" height="22">
+      </button>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-icon">
+        <img src="images/search-icon.png" alt="搜索" width="22" height="22">
+      </div>
+      <input type="text" id="search-input" placeholder="输入书签名称" autofocus>
+      <div class="clear-icon" id="clear-search-icon" style="display: none;">
+        <img src="images/clear-icon.png" alt="清空" width="20" height="20">
+      </div>
+    </div>
+    
+    <!-- 搜索结果容器 -->
+    <div class="search-results-container">
+      <div id="search-results"></div>
+    </div>
+    
+    <!-- 历史记录容器 -->
+    <div class="history-container">
+      <div class="history-header">
+        <h2 class="history-title">最近访问</h2>
+        <button id="clear-history" class="clear-history-btn">清空</button>
+      </div>
+      <div id="history-list"></div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

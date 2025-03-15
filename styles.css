@@ -1,0 +1,670 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 20px; /* 添加圆角 */
+
+}
+
+.container {
+  width: 440px;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 580px;
+  overflow: hidden; /* 改回hidden，去掉外侧滚动条 */
+  border-radius: 20px; /* 添加圆角 */
+  background-color: #ffffff;
+  position: relative; /* 添加相对定位 */
+}
+
+.header-fixed {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 确保垂直居中对齐 */
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0; /* 移除标题的默认外边距 */
+  flex-grow: 1; /* 让标题占据剩余空间 */
+  font-size: 20px;
+  color: #020817;
+  text-align: left;
+  margin-bottom: 0; /* 移除底部外边距，这可能是导致不对齐的原因 */
+}
+
+h2 {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #5f6368;
+}
+
+.search-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  z-index: 1;
+  color: #97A6B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #97A6B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.clear-icon:hover {
+  opacity: 0.7;
+}
+
+#search-input {
+  flex: 1;
+  padding: 0 16px 0 48px;
+  border: 1.5px solid #F1F5F9;
+  border-radius: 16px;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  height: 56px;
+  box-shadow: 0px 20px 40px 0px rgba(0,0,0,0.04); 
+  background-color: white;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, padding 0.3s ease;
+}
+
+#search-input:hover {
+  border-color: #6EE7B7;
+}
+
+#search-input:focus {
+  border-color: #6EE7B7;
+  border-width: 1.5px;
+  padding: 0 16px 0 48px;
+}
+
+.search-container:focus-within .search-icon {
+  opacity: 1;
+}
+
+#search-input::placeholder {
+  color: #a4bcd9;
+}
+
+#search-input:focus::placeholder {
+  opacity: 1;
+}
+
+/* 移除了过滤器和书签列表相关的样式 */
+
+.bookmark-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 0; /* 移除间距 */
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 20px 40px 0px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f1f5f9; /* 添加底部边框作为分隔 */
+}
+
+.bookmark-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.bookmark-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #020817;
+  margin-bottom: 4px;
+  white-space: nowrap; /* 限制在一行 */
+  overflow: hidden; /* 隐藏超出部分 */
+  text-overflow: ellipsis; /* 显示省略号 */
+}
+
+.bookmark-url {
+  color: #97A6B8;
+  font-size: 0.9em;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.folder-tag {
+  display: inline-block;
+  background-color: #e6f0ff;
+  color: #4a86e8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 最后一个卡片不需要底部边框 */
+.bookmark-item:last-child {
+  border-bottom: none;
+}
+
+.bookmark-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* 已移除favicon相关样式 */
+
+.bookmark-title {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-folder {
+  font-size: 11px;
+  color: #1a73e8;
+  background-color: #e8f0fe;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.bookmark-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.recent-bookmark {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0; /* 移除间距 */
+}
+
+.recent-bookmark:last-child {
+  border-bottom: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#no-results {
+  padding: 20px;
+  text-align: center;
+  color: #5f6368;
+}
+
+/* 滚动条样式 - 始终保留滚动条空间但根据需要显示/隐藏 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(193, 193, 193, 0.1); /* 默认几乎透明 */
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 当容器可滚动时显示滚动条 */
+.can-scroll::-webkit-scrollbar-thumb {
+  background: rgba(193, 193, 193, 0.8); /* 可滚动时显示 */
+}
+
+.recent-container {
+  max-height: 500px; /* 增加高度，确保有足够空间显示内容 */
+  overflow-y: auto; /* 只允许垂直滚动 */
+  overflow-x: hidden; /* 禁止水平滚动 */
+  /* 美化滚动条 */
+  scrollbar-width: thin; /* Firefox */
+}
+
+/* 为 Webkit 浏览器（Chrome、Safari等）自定义滚动条 */
+.recent-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recent-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.recent-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.recent-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+#recent-bookmarks {
+  max-height: 400px; /* 保持现有高度，应该足够显示10条记录 */
+  overflow-y: auto; /* 确保可以垂直滚动 */
+  overflow-x: hidden;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+
+/* 为历史搜索记录的滚动条设置样式 */
+#recent-bookmarks::-webkit-scrollbar {
+  width: 4px;
+}
+
+#recent-bookmarks::-webkit-scrollbar-track {
+  background: #F8FAFC;
+  border-radius: 4px;
+}
+
+#recent-bookmarks::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 4px;
+}
+
+#recent-bookmarks::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
+}
+
+/* 保持现有的项目样式 */
+#recent-bookmarks > div {
+  padding: 16px;
+  /*margin-bottom: 8px;*/
+  border-radius: 16px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: none; /* 移除阴影 */
+  border-bottom: none; /* 移除底部边框 */
+}
+
+/* 如果有其他可能导致阴影的属性，也一并移除 */
+#recent-bookmarks > div::after {
+  display: none; /* 移除可能存在的伪元素阴影 */
+}
+
+/* 可选：为当前选中或悬停的项目添加不同的样式 */
+#recent-bookmarks > div:hover {
+  background-color: #F8FAFC;
+}
+
+.footer { /* 假设这是底部遮挡的类名 */
+  height: 20px; /* 将高度从50px降低到20px */
+  background-color: white;
+  position: relative;
+  /* 其他样式 */
+}
+
+/* 如果是其他元素造成的遮挡，可能需要调整以下样式 */
+#recent-bookmarks {
+  margin-bottom: 5px; /* 减少底部外边距 */
+}
+
+/* 如果是固定在底部的元素 */
+.fixed-bottom {
+  height: 8px; /* 减少高度 */
+  /* 其他样式 */
+}
+
+.language-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 999px; /* 修改为999px使按钮成为圆形 */
+  cursor: pointer;
+  color: #97A6B8;
+  margin-left: auto;
+  align-self: center;
+}
+
+.language-toggle:hover {
+  background-color: #f0f0f0;
+  color: #020817;
+  border-radius: 999px; /* 确保悬停状态也是圆形 */
+}
+
+.language-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* 搜索结果容器样式 - 与历史记录容器保持一致 */
+.search-results-container {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+/* 为 Webkit 浏览器自定义滚动条 */
+.search-results-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+#search-results {
+  max-height: 495px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+
+/* 为搜索结果的滚动条设置样式 */
+#search-results::-webkit-scrollbar {
+  width: 4px;
+}
+
+#search-results::-webkit-scrollbar-track {
+  background: #F8FAFC;
+  border-radius: 4px;
+}
+
+#search-results::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 4px;
+}
+
+#search-results::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
+}
+
+/* 保持项目样式一致 */
+#search-results > div {
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+/* 只对书签项应用悬停效果，不影响无结果提示 */
+#search-results > div.bookmark-item:hover {
+  background-color: #F8FAFC;
+}
+
+/* 确保无结果提示不受悬停效果影响 */
+#search-results > div.no-results:hover {
+  background-color: transparent;
+}
+
+/* 历史记录容器样式 */
+.history-container {
+  margin-top: 0px;
+  max-height: 500px; /* 与search-results-container保持一致 */
+  overflow-y: auto; /* 与search-results-container保持一致 */
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  z-index: 5; /* 确保在其他元素之上 */
+  position: relative; /* 添加相对定位 */
+}
+
+.history-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748B;
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+#history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* 移除间距 */
+  margin-top: 0;
+  height: 400px; /* 调整高度，确保不会超出容器 */
+  overflow-y: auto; /* 允许垂直滚动 */
+  overflow-x: hidden; /* 禁止水平滚动 */
+  padding-right: 5px; /* 为滚动条留出空间 */
+}
+
+/* 为 #history-list 添加滚动条样式，与搜索结果一致 */
+#history-list::-webkit-scrollbar {
+  width: 4px; /* 与搜索结果滚动条宽度一致 */
+}
+
+#history-list::-webkit-scrollbar-track {
+  background: #F8FAFC; /* 与搜索结果滚动条轨道颜色一致 */
+  border-radius: 4px;
+}
+
+#history-list::-webkit-scrollbar-thumb {
+  background: #E2E8F0; /* 与搜索结果滚动条滑块颜色一致 */
+  border-radius: 4px;
+}
+
+#history-list::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1; /* 与搜索结果滚动条悬停颜色一致 */
+}
+
+/* 历史记录项样式 */
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 16px; /* 与bookmark-item保持一致 */
+  border-radius: 16px; /* 与bookmark-item保持一致 */
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 与bookmark-item保持一致 */
+  margin-bottom: 0; /* 与bookmark-item保持一致 */
+  z-index: 1; /* 降低z-index，避免与滚动冲突 */
+  box-shadow: none; /* 与search-results > div保持一致 */
+  border-bottom: none; /* 与search-results > div保持一致 */
+}
+
+.history-item:hover {
+  background-color: #F8FAFC; /* 与bookmark-item:hover保持一致 */
+}
+
+.history-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.history-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.history-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #020817;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-url {
+  color: #97A6B8;
+  font-size: 0.9em;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 确保文件夹标签样式一致 */
+.tag-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.folder-tag {
+  display: inline-block;
+  background-color: #e6f0ff;
+  color: #4a86e8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 为 Webkit 浏览器自定义滚动条 */
+.history-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.history-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 无历史记录提示样式 - 增强版 */
+.no-history {
+  text-align: center;
+  padding: 20px;
+  color: #97A6B8;
+  font-size: 14px;
+  margin-top: 12px; /* 添加上边距，将文本向下移动 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* 增加高度，使文本在垂直方向上居中 */
+  border-radius: 8px; /* 添加圆角 */
+  width: 80%; /* 控制宽度 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 历史记录标题容器 */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px; /* 增加一点底部间距 */
+  height: 30px; /* 设置固定高度 */
+}
+
+/* 清空按钮样式 */
+.clear-history-btn {
+  font-size: 12px;
+  color: #64748B;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.clear-history-btn:hover {
+  background-color: #F1F5F9;
+}
+
+/* 无搜索结果提示样式 - 没有背景 */
+.no-results {
+  text-align: center;
+  padding: 20px;
+  color: #97A6B8;
+  font-size: 14px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent !important; /* 强制背景透明 */
+  pointer-events: none; /* 禁用鼠标事件，防止悬停效果 */
+}
+
+/* 添加选中书签的样式 */
+.bookmark-item.selected {
+  background-color: #F1F5F9 !important; /* 使用!important确保不被覆盖 */
+}
+
+/* 添加选中历史记录项的样式 */
+.history-item.selected {
+  background-color: #F1F5F9 !important; /* 使用!important确保不被覆盖 */
+}
